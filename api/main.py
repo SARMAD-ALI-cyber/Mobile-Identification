@@ -14,10 +14,10 @@ from io import BytesIO
 app = FastAPI()
 
 # Load trained models and preprocessor
-svm_model = joblib.load("svm_modelv2.pkl")
-scaler_sgmm = joblib.load("scaler_sgmm.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
-ubm_model = joblib.load("ubm64.pkl")
+svm_model = joblib.load("../svm_modelv2.pkl")
+scaler_sgmm = joblib.load("../scaler_sgmm.pkl")
+label_encoder = joblib.load("../label_encoder.pkl")
+ubm_model = joblib.load("../ubm64.pkl")
 
 # MFCC extraction parameters
 N_MFCC = 13

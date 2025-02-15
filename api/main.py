@@ -51,7 +51,7 @@ def extract_sgmm_features(mfcc_features, ubm):
 
     return sgmm_features.flatten()
 
-@app.post("/")
+@app.get("/")
 def hello():
     return {"Running 100%"}
 @app.post("/predict/")

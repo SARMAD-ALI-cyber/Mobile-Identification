@@ -2,12 +2,12 @@ import os
 import numpy as np
 import librosa
 import joblib
-from sklearn.mixture import GaussianMixture
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+# from sklearn.mixture import GaussianMixture
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.model_selection import train_test_split
+# from sklearn.svm import SVC
+# from sklearn.preprocessing import LabelEncoder
+# from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from io import BytesIO

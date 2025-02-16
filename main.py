@@ -2,6 +2,7 @@ import os
 import numpy as np
 import librosa
 import joblib
+from fastapi.responses import JSONResponse
 # from sklearn.mixture import GaussianMixture
 # from sklearn.preprocessing import StandardScaler
 # from sklearn.model_selection import train_test_split
@@ -18,7 +19,8 @@ app.add_middleware(
     allow_origins=["*"],  # Your frontend development server
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
+    expose_headers=["*"]  # Add this to expose necessary headers
 )
 # Load trained models and preprocessor
 svm_model = joblib.load("svm_modelv2.pkl")
@@ -87,10 +89,14 @@ async def predict_audio(file: UploadFile = File(...)):
         # Convert prediction to mobile device name
         predicted_device = label_encoder.inverse_transform(y_pred)[0]
 
-        return {"predicted_device": predicted_device}
+        response = JSONResponse(content={"predicted_device": predicted_device})
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        return response
 
     except Exception as e:
-        return {"error": str(e)}
+        response = JSONResponse(content={"error": str(e)}, status_code=400)
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        return response
     
 if __name__ == "__main__":
     import uvicorn

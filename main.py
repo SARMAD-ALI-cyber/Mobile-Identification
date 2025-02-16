@@ -64,10 +64,10 @@ def extract_sgmm_features(mfcc_features, ubm):
 def hello():
     return {"Running 100%"}
 @app.post("/predict/")
-def predict_audio(file: UploadFile = File(...)):
+async def predict_audio(file: UploadFile = File(...)):
     try:
         # Read audio file
-        audio_bytes = file.read()
+        audio_bytes = await file.read()
         y, sr = librosa.load(BytesIO(audio_bytes), sr=None)
 
         # Extract MFCC features

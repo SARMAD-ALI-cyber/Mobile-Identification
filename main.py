@@ -15,7 +15,7 @@ from io import BytesIO
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://ridiculous-brandy-samii-95e7a34e.koyeb.app"],  # Your frontend development server
+    allow_origins=["*"],  # Your frontend development server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]

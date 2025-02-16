@@ -15,7 +15,7 @@ from io import BytesIO
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Your frontend development server
+    allow_origins=["http://ridiculous-brandy-samii-95e7a34e.koyeb.app"],  # Your frontend development server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -94,4 +94,4 @@ async def predict_audio(file: UploadFile = File(...)):
     
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0",reload=True)
+    uvicorn.run("main:app",reload=True)

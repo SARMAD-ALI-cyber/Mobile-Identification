@@ -64,10 +64,10 @@ def extract_sgmm_features(mfcc_features, ubm):
 def hello():
     return {"Running 100%"}
 @app.post("/predict/")
-async def predict_audio(file: UploadFile = File(...)):
+def predict_audio(file: UploadFile = File(...)):
     try:
         # Read audio file
-        audio_bytes = await file.read()
+        audio_bytes = file.read()
         y, sr = librosa.load(BytesIO(audio_bytes), sr=None)
 
         # Extract MFCC features
@@ -100,4 +100,4 @@ async def predict_audio(file: UploadFile = File(...)):
     
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app",host="0.0.0.0",reload=True)
+    uvicorn.run("main:app",host="0.0.0.0",workers=4,eload=True)
